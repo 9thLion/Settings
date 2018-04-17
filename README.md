@@ -1,4 +1,4 @@
 # Settings
 Settings for various programs
 
-change vimrc to .vimrc in your home directory
+Some need to be renamed so that they start with "." (vimrc->.vimrc, tmux.conf->.tmux.conf).
