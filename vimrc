@@ -1,3 +1,12 @@
+" PEP8
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
 " enable syntax highlighting
 syntax enable
 
@@ -6,9 +15,6 @@ set number
 
 " set tabs to have 4 spaces
 set ts=4
-
-" indent when moving to the next line while writing code
-set autoindent
 
 " expand tabs into spaces
 set expandtab
@@ -28,6 +34,7 @@ let python_highlight_all = 1
 set nocompatible              " required
 filetype off                  " required
 
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -39,12 +46,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+" Autocomplete bundle:
+Plugin 'Valloric/YouCompleteMe'
+"
+Plugin 'vim-scripts/indentpython.vim'
 " Autocomplete jedi. supertab is also needed for <tab> to work
 Plugin 'davidhalter/jedi'
 let g:jedi#popup_on_dot=0
@@ -53,14 +58,23 @@ Plugin 'ervandew/supertab'
 " File browser, :NERDTree to activate
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
+" Super Searching
+Plugin 'kien/ctrlp.vim'
+
+" Git Integration
+Plugin 'tpope/vim-fugitive'
 " Powerline
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " coloscheme zenburn
-Plugin 'jnurmine/Zenburn'
-set background=dark
+Plugin 'sickill/vim-monokai'
+colorscheme monokai
+
+" set background=dark
 
 set clipboard=unnamed
-
-
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
